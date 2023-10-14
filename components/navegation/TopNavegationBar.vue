@@ -9,5 +9,6 @@
     background-color: $background-color;
     padding: 2rem;
     padding-bottom: 0;
+    height: 100%;
 }
 </style>
