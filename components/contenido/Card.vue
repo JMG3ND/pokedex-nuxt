@@ -1,34 +1,23 @@
 <template>
-    <div class="card" :class="`card--${colorClass}`">
+    <div class="card" :class="`card--${pokemon.type}`">
         <figure class="card__figure">
             <div class="card__image-container">
-                <slot />
+                <img class="card__image" :src="pokemon.sprite" />
             </div>
-            <figcaption class="card__image-description">
-                <span class="card__image-description__number">#{{ npokemon }}</span>
-                <span class="card__image-description__name">{{ name }}</span>
+            <figcaption class="card__description">
+                <span class="card__number">#{{ pokemon.id }}</span>
+                <span class="card__name">{{ pokemon.name }}</span>
             </figcaption>
         </figure>
     </div>
 </template>
 
 <script setup>
-const props = defineProps(["npokemon"]);
-const name = ref("");
-const dataPokemon = ref({});
-const colorClass = ref('');
-onMounted(() => {
-    fetch(`https://pokeapi.co/api/v2/pokemon/${props.npokemon}/`)
-        .then(response => response.json())
-        .then(data => dataPokemon.value = data)
-        .finally(() => {
-            name.value = dataPokemon.value.forms[0].name
-                .split('')
-                .map((v, i) => i == 0 ? v.toUpperCase() : v)
-                .join('');
-            colorClass.value = dataPokemon.value.types[0].type.name;
-        })
-})
+import { getCardDataPokemon } from '~/composables/pokemonData';
+
+const prop = defineProps(["url"]);
+const pokemon = ref({});
+(async () => pokemon.value = await getCardDataPokemon(prop.url))();
 </script>
 
 <style lang="scss">
@@ -52,10 +41,10 @@ onMounted(() => {
         width: 180px;
         height: 180px;
         text-align: center;
+    }
 
-        &>img {
-            min-width: 100%;
-        }
+    &__image {
+        width: 100%;
     }
 
     &__figure {
@@ -70,7 +59,7 @@ onMounted(() => {
         gap: 1rem;
     }
 
-    &__image-description {
+    &__description {
         display: flex;
         flex-direction: column;
         width: 100%;
@@ -82,13 +71,12 @@ onMounted(() => {
         font-family: 'Roboto Slab', serif;
 
         color: rgba(0, 0, 0, 0.628);
+    }
 
-        &__number {
-            background-color: rgba(0, 0, 0, 0.1);
-            padding: 5px 10px;
-            border-radius: 10px;
-        }
-
+    &__number {
+        background-color: rgba(0, 0, 0, 0.1);
+        padding: 5px 10px;
+        border-radius: 10px;
     }
 
     @for $i from 1 through 18 {

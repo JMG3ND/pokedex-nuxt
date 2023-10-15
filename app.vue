@@ -5,23 +5,17 @@
     </div>
     <div class="screen__menu-container">
       <ContenidoMainContainer>
-        <ContenidoCard v-for="pokemon, index in dataPokemons" :npokemon="index + 1">
-          <img :src="image(index)" />
-        </ContenidoCard>
+        <ContenidoCard v-for="url in listUrlPokemons" :url="url" />
       </ContenidoMainContainer>
     </div>
   </div>
 </template>
 
 <script setup>
-const dataPokemons = ref({});
-const image = index => `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${index + 1}.png`;
+import { getListPokemons } from './composables/pokemonData';
 
-onMounted(() => {
-  fetch("https://pokeapi.co/api/v2/pokemon/?offset=60&limit=60")
-    .then(response => response.json())
-    .then(data => dataPokemons.value = data.results)
-})
+const listUrlPokemons = ref();
+(async () => listUrlPokemons.value = await getListPokemons())();
 </script>
 
 <style lang="scss">
@@ -40,4 +34,4 @@ onMounted(() => {
     width: 100%;
   }
 }
-</style>
+</style>./composables/pokemonData
