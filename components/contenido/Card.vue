@@ -2,10 +2,10 @@
     <div class="card" :class="`card--${pokemon.type}`">
         <figure class="card__figure">
             <div class="card__image-container">
-                <img class="card__image" :src="pokemon.sprite" />
+                <img class="card__image" :src="pokemon.sprite" loading="lazy" />
             </div>
             <figcaption class="card__description">
-                <span class="card__number">#{{ pokemon.id }}</span>
+                <span class="card__number">#{{ pokemon.number }}</span>
                 <span class="card__name">{{ pokemon.name }}</span>
             </figcaption>
         </figure>
@@ -29,6 +29,8 @@ const pokemon = ref({});
     border-radius: 1rem;
     padding: 1rem;
     cursor: pointer;
+    border: rgba(0, 0, 0, 0.3) solid 2px;
+    box-shadow: 3px 2px 55px -21px rgba(0, 0, 0, 0.76);
     transition: scale 100ms ease-in-out;
 
     &:hover {
@@ -36,6 +38,7 @@ const pokemon = ref({});
     }
 
     &__image-container {
+        box-shadow: 3px 2px 55px -21px rgba(0, 0, 0, 0.5);
         background-color: rgba(255, 255, 255, 0.6);
         border-radius: 50%;
         width: 180px;
@@ -44,7 +47,7 @@ const pokemon = ref({});
     }
 
     &__image {
-        width: 100%;
+        width: 90%;
     }
 
     &__figure {
@@ -60,23 +63,23 @@ const pokemon = ref({});
     }
 
     &__description {
+        font-family: 'Roboto Mono', monospace;
+        color: rgba(0, 0, 0, 0.5);
         display: flex;
         flex-direction: column;
         width: 100%;
         align-items: center;
         gap: 1rem;
-
-        font-size: x-large;
-        font-family: 'Roboto Mono', monospace;
-        font-family: 'Roboto Slab', serif;
-
-        color: rgba(0, 0, 0, 0.628);
     }
 
     &__number {
         background-color: rgba(0, 0, 0, 0.1);
-        padding: 5px 10px;
+        padding: 0 10px;
         border-radius: 10px;
+    }
+
+    &__name {
+        font-size: large;
     }
 
     @for $i from 1 through 18 {
