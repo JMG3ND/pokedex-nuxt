@@ -2,7 +2,8 @@
     <div class="card" :class="`card--${pokemon.type}`">
         <figure class="card__figure">
             <div class="card__image-container">
-                <img class="card__image" :src="pokemon.sprite" loading="lazy" />
+                <VisualLoadingSpinner class="card__spinner" v-if="loading" />
+                <img class="card__image" :src="pokemon.sprite" @load="finishLoading()" />
             </div>
             <figcaption class="card__description">
                 <span class="card__number">#{{ pokemon.number }}</span>
@@ -18,13 +19,15 @@ import { getCardDataPokemon } from '~/composables/pokemonData';
 const prop = defineProps(["url"]);
 const pokemon = ref({});
 (async () => pokemon.value = await getCardDataPokemon(prop.url))();
+
+const loading = ref(true);
+const finishLoading = () => loading.value = false;
 </script>
 
 <style lang="scss">
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@700&family=Roboto+Slab&display=swap');
 
 .card {
-    background-color: $bug;
     width: fit-content;
     border-radius: 1rem;
     padding: 1rem;
@@ -44,6 +47,13 @@ const pokemon = ref({});
         width: 180px;
         height: 180px;
         text-align: center;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    &__spinner {
+        position: absolute;
     }
 
     &__image {
@@ -69,7 +79,6 @@ const pokemon = ref({});
         flex-direction: column;
         width: 100%;
         align-items: center;
-        gap: 1rem;
     }
 
     &__number {
