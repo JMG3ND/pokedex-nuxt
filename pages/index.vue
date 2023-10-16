@@ -16,6 +16,7 @@
 <script setup>
 import { getListPokemons } from '@/composables/pokemonData';
 
+// Lista de las url de los pokemones para hacer peticiones en la card
 const listUrlPokemons = ref();
 (async () => listUrlPokemons.value = await getListPokemons())();
 
