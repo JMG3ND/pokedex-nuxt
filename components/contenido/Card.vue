@@ -117,4 +117,18 @@ const finishLoading = () => loading.value = false;
         }
     }
 }
+
+@media screen and (max-width: 800px) {
+    .card {
+        padding: 0.5rem;
+        &__image-container {
+            width: 100px;
+            height: 100px
+        }
+
+        &__name, &__number {
+            font-size: small;
+        }
+    }
+}
 </style>
