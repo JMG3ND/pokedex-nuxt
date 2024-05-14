@@ -171,9 +171,34 @@ const finishLoading = () => (loading.value = false);
       height: 100px;
     }
 
+    &__figure {
+      gap: 0.5rem;
+      padding-bottom: 0.5rem;
+    }
+
     &__name,
     &__number {
       font-size: small;
+    }
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .card {
+    padding: 0.3rem;
+    &__image-container {
+      width: 75px;
+      height: 75px;
+    }
+
+    &__figure {
+      gap: 0.2rem;
+      padding-bottom: 0.2rem;
+    }
+
+    &__name,
+    &__number {
+      font-size: x-small;
     }
   }
 }

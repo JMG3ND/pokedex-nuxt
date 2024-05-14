@@ -64,6 +64,12 @@ onMounted(() => {
   }
 }
 
+@media screen and (max-width: 500px) {
+  .screen__menu-container {
+    padding: 0;
+  }
+}
+
 .main {
   background: linear-gradient(to right, #d4d3dd, #efefbb);
   border: rgba(0, 0, 0, 0.5) solid 4px;
