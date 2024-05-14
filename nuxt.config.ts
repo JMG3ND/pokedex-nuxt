@@ -9,5 +9,14 @@ export default defineNuxtConfig({
         }
       }
     }
-  }
+  },
+  app: {
+    head: {
+      title: 'Pokedex',
+      htmlAttrs: {
+        lang: 'es'
+      },
+      
+    },
+  },
 })
