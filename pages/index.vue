@@ -41,6 +41,7 @@ onMounted(() => {
 
 <style lang="scss">
 .screen {
+  background-color: rgb(245, 84, 84);
   height: 100vh;
   max-height: 100vh;
   overflow-y: hidden;

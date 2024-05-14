@@ -53,7 +53,7 @@ const finishLoading = () => loading.value = false;
     }
 
     &__spinner {
-        position: absolute;
+        //position: absolute;
     }
 
     &__image {
