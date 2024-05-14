@@ -8,7 +8,7 @@
             v-if="pokemon.type"
             title="background"
             class="card__image-background"
-            src="`/public/pokemon-types/fire.png`"
+            src="/public/pokemon-types/fire.png"
           />
           <img
             :style="`display: ${loading ? 'none' : 'block'}`"
