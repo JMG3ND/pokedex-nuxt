@@ -5,6 +5,12 @@
         <div class="card__image-container">
           <VisualLoadingSpinner class="card__spinner" v-if="loading" />
           <img
+            title="background"
+            v-if="pokemon.type"
+            class="card__image-background"
+            :src="`_nuxt/public/pokemon-types/${pokemon.type}.png`"
+          />
+          <img
             :style="`display: ${loading ? 'none' : 'block'}`"
             :title="pokemon.name"
             class="card__image"
@@ -58,9 +64,18 @@ const finishLoading = () => (loading.value = false);
     display: flex;
     align-items: center;
     justify-content: center;
+    position: relative;
+  }
+
+  &__image-background {
+    z-index: 0;
+    position: absolute;
+    max-height: 100%;
+    opacity: 0.3;
   }
 
   &__image {
+    z-index: 1;
     width: 90%;
   }
 

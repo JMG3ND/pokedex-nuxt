@@ -1,14 +1,16 @@
 <template>
-  <div class="screen">
-    <div class="screen__top-navegation-container">
-      <NavegationTopNavegationBar />
-    </div>
-    <div class="screen__menu-container">
-      <main ref="mainContainer" class="main">
-        <div class="main__container">
-          <ContenidoCard v-for="url in listUrlPokemons" :url="url" />
-        </div>
-      </main>
+  <div>
+    <div class="screen">
+      <div class="screen__top-navegation-container">
+        <NavegationTopNavegationBar class="justify" />
+      </div>
+      <div class="screen__menu-container">
+        <main ref="mainContainer" class="main">
+          <div class="main__container">
+            <ContenidoCard v-for="url in listUrlPokemons" :url="url" />
+          </div>
+        </main>
+      </div>
     </div>
   </div>
 </template>
@@ -20,6 +22,7 @@ import { getListPokemons } from "@/composables/pokemonData";
 const listUrlPokemons = ref();
 (async () => (listUrlPokemons.value = await getListPokemons()))();
 
+// Hace la perición para añádir pokemones a la pantalla
 const nextPokemons = async () => {
   const newList = await getListPokemons();
   listUrlPokemons.value.push(...newList);
@@ -27,7 +30,7 @@ const nextPokemons = async () => {
 
 const mainContainer = ref();
 onMounted(() => {
-  // Evento de scroll para la página completa
+  // Evento de scroll para hacer peticiones para mostrar más pokmones
   mainContainer.value.addEventListener("scroll", function () {
     const difheignt = Math.floor(
       mainContainer.value.scrollHeight - mainContainer.value.scrollTop
@@ -41,12 +44,18 @@ onMounted(() => {
 
 <style lang="scss">
 .screen {
-  background-color: rgb(245, 84, 84);
   height: 100vh;
   max-height: 100vh;
   overflow-y: hidden;
   display: grid;
   grid-template-rows: 1fr 12fr;
+
+  &__top-navegation-container {
+    .justify {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+  }
 
   &__menu-container {
     overflow-y: hidden;

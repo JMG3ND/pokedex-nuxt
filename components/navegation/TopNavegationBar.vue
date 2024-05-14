@@ -1,14 +1,24 @@
 <template>
+  <div>
     <header class="top-navegation-bar">
-        Navegation Bar
+      <img
+        class="top-navegation-bar__logo"
+        title="logo"
+        src="/public/pokedex-logo.png"
+        alt="Logo"
+      />
     </header>
+  </div>
 </template>
 
 <style scoped lang="scss">
-.top-navegation-bar{
-    background-color: $background-color;
-    padding: 2rem;
-    padding-bottom: 0;
-    height: 100%;
+.top-navegation-bar {
+  background-color: $background-color;
+  height: 100%;
+  padding: 0.5rem 1rem;
+
+  &__logo {
+    height: 50px;
+  }
 }
 </style>
