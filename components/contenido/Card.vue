@@ -1,20 +1,23 @@
 <template>
-  <div class="card" :class="`card--${pokemon.type}`">
-    <figure class="card__figure">
-      <div class="card__image-container">
-        <VisualLoadingSpinner class="card__spinner" v-if="loading" />
-        <img
-          :title="pokemon.name"
-          class="card__image"
-          :src="pokemon.sprite"
-          @load="finishLoading()"
-        />
-      </div>
-      <figcaption class="card__description">
-        <span class="card__number">#{{ pokemon.number }}</span>
-        <span class="card__name">{{ pokemon.name }}</span>
-      </figcaption>
-    </figure>
+  <div>
+    <div class="card" :class="`card--${pokemon.type}`">
+      <figure class="card__figure">
+        <div class="card__image-container">
+          <VisualLoadingSpinner class="card__spinner" v-if="loading" />
+          <img
+            :style="`display: ${loading ? 'none' : 'block'}`"
+            :title="pokemon.name"
+            class="card__image"
+            :src="pokemon.sprite"
+            @load="finishLoading()"
+          />
+        </div>
+        <figcaption class="card__description">
+          <span class="card__number">#{{ pokemon.number }}</span>
+          <span class="card__name">{{ pokemon.name }}</span>
+        </figcaption>
+      </figure>
+    </div>
   </div>
 </template>
 
