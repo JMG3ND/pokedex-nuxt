@@ -5,10 +5,10 @@
         <div class="card__image-container">
           <VisualLoadingSpinner class="card__spinner" v-if="loading" />
           <img
-            title="background"
             v-if="pokemon.type"
+            title="background"
             class="card__image-background"
-            :src="`_nuxt/public/pokemon-types/${pokemon.type}.png`"
+            src="`/public/pokemon-types/fire.png`"
           />
           <img
             :style="`display: ${loading ? 'none' : 'block'}`"
