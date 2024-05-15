@@ -92,4 +92,9 @@ onMounted(() => {
     gap: 0.5rem;
   }
 }
+@media screen and (max-width: 400px) {
+  .main__container {
+    gap: 0.2rem;
+  }
+}
 </style>

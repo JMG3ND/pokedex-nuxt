@@ -5,6 +5,7 @@
         <div class="card__image-container">
           <VisualLoadingSpinner class="card__spinner" v-if="loading" />
           <img
+          
             v-if="pokemon.type"
             title="background"
             class="card__image-background"
@@ -58,8 +59,8 @@ const finishLoading = () => (loading.value = false);
     box-shadow: 3px 2px 55px -21px rgba(0, 0, 0, 0.5);
     background-color: rgba(255, 255, 255, 0.6);
     border-radius: 50%;
-    width: 180px;
-    height: 180px;
+    width: 140px;
+    height: 140px;
     text-align: center;
     display: flex;
     align-items: center;
@@ -187,8 +188,8 @@ const finishLoading = () => (loading.value = false);
   .card {
     padding: 0.3rem;
     &__image-container {
-      width: 75px;
-      height: 75px;
+      width: 70px;
+      height: 70px;
     }
 
     &__figure {
