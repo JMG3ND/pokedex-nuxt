@@ -42,14 +42,15 @@ const finishLoading = () => (loading.value = false);
 .card {
   width: 18%;
   border-radius: 1rem;
-  padding: 0.5rem;
   cursor: pointer;
   border: rgba(0, 0, 0, 0.3) solid 2px;
   box-shadow: 3px 2px 55px -21px rgba(0, 0, 0, 0.76);
   transition: transform 100ms ease-in-out;
+  padding: 0.5rem 0.5rem 0 0.5rem;
 
   @media screen and (max-width: 750px) {
     width: 23%;
+    padding: 0.1rem;
   }
 
   &:hover {
@@ -57,12 +58,8 @@ const finishLoading = () => (loading.value = false);
   }
 
   &__image-container {
-    box-shadow: 3px 2px 55px -21px rgba(0, 0, 0, 0.5);
-    background-color: rgba(255, 255, 255, 0.6);
-    border-radius: 50%;
     aspect-ratio: 1 / 1;
     width: 100%;
-    text-align: center;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -71,25 +68,19 @@ const finishLoading = () => (loading.value = false);
 
   &__image-background {
     z-index: 0;
+    box-shadow: 3px 2px 55px -21px rgba(0, 0, 0, 0.5);
     position: absolute;
     max-height: 100%;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
     opacity: 0.3;
   }
 
   &__image {
     z-index: 1;
-    width: 90%;
-  }
-
-  &__figure {
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    justify-content: center;
-    width: fit-content;
-    height: 100%;
-    margin: 0 auto;
-    gap: 0.5rem;
+    width: 100%;
   }
 
   &__description {
@@ -99,6 +90,11 @@ const finishLoading = () => (loading.value = false);
     flex-direction: column;
     width: 100%;
     align-items: center;
+    margin: 1rem 0;
+
+    @media screen and (max-width: 750px) {
+      margin: 0.2rem;
+    }
   }
 
   &__number {
@@ -106,25 +102,24 @@ const finishLoading = () => (loading.value = false);
     padding: 0 10px;
     border-radius: 10px;
 
-    @media screen and (max-width: 500px) {
+    @media screen and (max-width: 600px) {
       font-size: small;
     }
-    @media screen and (max-width: 450px) {
+    @media screen and (max-width: 500px) {
       font-size: x-small;
     }
   }
 
   &__name {
-    @media screen and (max-width: 500px) {
+    @media screen and (max-width: 600px) {
       font-size: small;
     }
-    @media screen and (max-width: 450px) {
+    @media screen and (max-width: 500px) {
       font-size: x-small;
     }
   }
 
   &__spinner {
-    max-width: 100%;
     z-index: 1;
   }
 
