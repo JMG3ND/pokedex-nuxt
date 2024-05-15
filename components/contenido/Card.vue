@@ -124,6 +124,7 @@ const finishLoading = () => (loading.value = false);
   }
 
   &__spinner {
+    max-width: 100%;
     z-index: 1;
   }
 
