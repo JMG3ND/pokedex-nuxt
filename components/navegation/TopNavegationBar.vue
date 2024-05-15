@@ -1,13 +1,13 @@
 <template>
   <div>
-    <header class="top-navegation-bar">
+    <div class="top-navegation-bar">
       <img
         class="top-navegation-bar__logo"
         title="logo"
         src="/public/pokedex-logo.png"
         alt="Logo"
       />
-    </header>
+    </div>
   </div>
 </template>
 

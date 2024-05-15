@@ -1,30 +1,27 @@
 <template>
-  <div>
-    <div class="card" :class="`card--${pokemon.type}`">
-      <figure class="card__figure">
-        <div class="card__image-container">
-          <VisualLoadingSpinner class="card__spinner" v-if="loading" />
-          <img
-          
-            v-if="pokemon.type"
-            title="background"
-            class="card__image-background"
-            :src="`/pokemon-types/${pokemon.type}.png`"
-          />
-          <img
-            :style="`display: ${loading ? 'none' : 'block'}`"
-            :title="pokemon.name"
-            class="card__image"
-            :src="pokemon.sprite"
-            @load="finishLoading()"
-          />
-        </div>
-        <figcaption class="card__description">
-          <span class="card__number">#{{ pokemon.number }}</span>
-          <span class="card__name">{{ pokemon.name }}</span>
-        </figcaption>
-      </figure>
-    </div>
+  <div class="card" :class="`card--${pokemon.type}`">
+    <figure class="card__figure">
+      <div class="card__image-container">
+        <VisualLoadingSpinner class="card__spinner" v-if="loading" />
+        <img
+          v-if="pokemon.type"
+          title="background"
+          class="card__image-background"
+          :src="`/pokemon-types/${pokemon.type}.png`"
+        />
+        <img
+          :style="`display: ${loading ? 'none' : 'block'}`"
+          :title="pokemon.name"
+          class="card__image"
+          :src="pokemon.sprite"
+          @load="finishLoading()"
+        />
+      </div>
+      <figcaption class="card__description">
+        <span class="card__number">#{{ pokemon.number }}</span>
+        <span class="card__name">{{ pokemon.name }}</span>
+      </figcaption>
+    </figure>
   </div>
 </template>
 
@@ -43,13 +40,17 @@ const finishLoading = () => (loading.value = false);
 @import url("https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@700&family=Roboto+Slab&display=swap");
 
 .card {
-  width: fit-content;
+  width: 18%;
   border-radius: 1rem;
-  padding: 1rem;
+  padding: 0.5rem;
   cursor: pointer;
   border: rgba(0, 0, 0, 0.3) solid 2px;
   box-shadow: 3px 2px 55px -21px rgba(0, 0, 0, 0.76);
   transition: transform 100ms ease-in-out;
+
+  @media screen and (max-width: 750px) {
+    width: 23%;
+  }
 
   &:hover {
     transform: scale(1.05);
@@ -59,8 +60,8 @@ const finishLoading = () => (loading.value = false);
     box-shadow: 3px 2px 55px -21px rgba(0, 0, 0, 0.5);
     background-color: rgba(255, 255, 255, 0.6);
     border-radius: 50%;
-    width: 140px;
-    height: 140px;
+    aspect-ratio: 1 / 1;
+    width: 100%;
     text-align: center;
     display: flex;
     align-items: center;
@@ -88,8 +89,7 @@ const finishLoading = () => (loading.value = false);
     width: fit-content;
     height: 100%;
     margin: 0 auto;
-    padding-bottom: 1rem;
-    gap: 1rem;
+    gap: 0.5rem;
   }
 
   &__description {
@@ -105,10 +105,22 @@ const finishLoading = () => (loading.value = false);
     background-color: rgba(0, 0, 0, 0.1);
     padding: 0 10px;
     border-radius: 10px;
+
+    @media screen and (max-width: 500px) {
+      font-size: small;
+    }
+    @media screen and (max-width: 450px) {
+      font-size: x-small;
+    }
   }
 
   &__name {
-    font-size: large;
+    @media screen and (max-width: 500px) {
+      font-size: small;
+    }
+    @media screen and (max-width: 450px) {
+      font-size: x-small;
+    }
   }
 
   &__spinner {
@@ -164,46 +176,6 @@ const finishLoading = () => (loading.value = false);
         ),
         #{$type}
       );
-    }
-  }
-}
-
-@media screen and (max-width: 800px) {
-  .card {
-    padding: 0.5rem;
-    &__image-container {
-      width: 100px;
-      height: 100px;
-    }
-
-    &__figure {
-      gap: 0.5rem;
-      padding-bottom: 0.5rem;
-    }
-
-    &__name,
-    &__number {
-      font-size: small;
-    }
-  }
-}
-
-@media screen and (max-width: 570px) {
-  .card {
-    padding: 0.3rem;
-    &__image-container {
-      width: 70px;
-      height: 70px;
-    }
-
-    &__figure {
-      gap: 0.2rem;
-      padding-bottom: 0.2rem;
-    }
-
-    &__name,
-    &__number {
-      font-size: x-small;
     }
   }
 }
