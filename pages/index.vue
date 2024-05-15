@@ -86,7 +86,7 @@ onMounted(() => {
     max-height: 100%;
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
+    justify-content: space-evenly;
     margin: 0 auto;
     padding: 0.5rem;
     gap: 0.5rem;

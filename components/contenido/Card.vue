@@ -111,6 +111,10 @@ const finishLoading = () => (loading.value = false);
     font-size: large;
   }
 
+  &__spinner {
+    z-index: 1;
+  }
+
   @for $i from 1 through 18 {
     $type: nth(
       (
@@ -184,7 +188,7 @@ const finishLoading = () => (loading.value = false);
   }
 }
 
-@media screen and (max-width: 400px) {
+@media screen and (max-width: 570px) {
   .card {
     padding: 0.3rem;
     &__image-container {
