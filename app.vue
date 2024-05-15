@@ -44,7 +44,7 @@ $max-widht: 1200px;
     max-width: $max-widht;
     max-height: 95%;
     margin: 0 auto;
-    border-radius: 30px;
+    border-radius: 15px;
     box-shadow: inset 3px 2px 55px -21px rgba(0, 0, 0, 1);
     
     & > div:first-child {

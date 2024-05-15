@@ -83,6 +83,12 @@ const finishLoading = () => (loading.value = false);
     width: 100%;
   }
 
+  &__figure {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
   &__description {
     font-family: "Roboto Mono", monospace;
     color: rgba(0, 0, 0, 0.5);
