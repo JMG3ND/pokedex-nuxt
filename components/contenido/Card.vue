@@ -49,7 +49,6 @@ const finishLoading = () => (loading.value = false);
   padding: 0.5rem 0.5rem 0 0.5rem;
 
   @media screen and (max-width: 750px) {
-    width: 100%;
     padding: 0.1rem;
   }
 
@@ -107,19 +106,10 @@ const finishLoading = () => (loading.value = false);
     background-color: rgba(0, 0, 0, 0.1);
     padding: 0 10px;
     border-radius: 10px;
-
-    @media screen and (max-width: 650px) {
-      font-size: small;
-    }
-    @media screen and (max-width: 400px) {
-      font-size: x-small;
-    }
-    @media screen and (max-width: 350px) {
-      font-size: xx-small;
-    }
   }
 
-  &__name {
+  // tamaño de fuente para el número y nombre del pokemón
+  &__name, &__number {
     @media screen and (max-width: 650px) {
       font-size: small;
     }
