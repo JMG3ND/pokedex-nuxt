@@ -1,12 +1,19 @@
 <template>
   <div>
-    <input class="filter-pokemon" placeholder="pokemon..." type="text" />
+    <input
+      @change="index = 40"
+      v-model="finder"
+      class="filter-pokemon"
+      placeholder="pokemon..."
+      type="text"
+    />
   </div>
 </template>
 
 <script setup>
 import { usePokemonStore } from "@/composables/pokemonStore";
 const pokemonData = usePokemonStore();
+const { finder, index } = storeToRefs(pokemonData);
 </script>
 
 <style lang="scss" scoped>

@@ -1,23 +1,19 @@
 <template>
   <div ref="mainContainer">
     <ContenidoCardContainer>
-      <ContenidoCard v-for="url in listUrlPokemons" :url="url" />
+      <ContenidoCard
+        v-for="pokemon in listUrl"
+        :key="pokemon.name"
+        :url="pokemon.url"
+      />
     </ContenidoCardContainer>
   </div>
 </template>
 
 <script setup>
-import { getListPokemons } from "@/composables/pokemonData";
-
-// Lista de las url de los pokemones para hacer peticiones en la card
-const listUrlPokemons = ref();
-(async () => (listUrlPokemons.value = await getListPokemons()))();
-
-// Hace la perición para añádir pokemones a la pantalla
-const nextPokemons = async () => {
-  const newList = await getListPokemons();
-  listUrlPokemons.value.push(...newList);
-};
+import { usePokemonStore } from "@/composables/pokemonStore";
+const pokemonData = usePokemonStore();
+const { dataBasePokemons, listUrl, index } = storeToRefs(pokemonData);
 
 const mainContainer = ref();
 onMounted(() => {
@@ -26,8 +22,12 @@ onMounted(() => {
     const difheignt = Math.floor(
       mainContainer.value.scrollHeight - mainContainer.value.scrollTop
     );
-    if (difheignt <= mainContainer.value.clientHeight + 500) {
-      nextPokemons();
+    if (difheignt <= mainContainer.value.clientHeight) {
+      if (index.value + 40 < dataBasePokemons.value.length) {
+        index.value += 40;
+      } else {
+        index.value += dataBasePokemons.value.length - index.value;
+      }
     }
   });
 });
