@@ -26,7 +26,7 @@ onMounted(() => {
     const difheignt = Math.floor(
       mainContainer.value.scrollHeight - mainContainer.value.scrollTop
     );
-    if (difheignt <= mainContainer.value.clientHeight + 10) {
+    if (difheignt <= mainContainer.value.clientHeight + 500) {
       nextPokemons();
     }
   });
