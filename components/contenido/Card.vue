@@ -111,17 +111,11 @@ const finishLoading = () => (loading.value = false);
     @media screen and (max-width: 650px) {
       font-size: small;
     }
-    @media screen and (max-width: 500px) {
-      font-size: x-small;
-    }
   }
 
   &__name {
     @media screen and (max-width: 650px) {
       font-size: small;
-    }
-    @media screen and (max-width: 500px) {
-      font-size: x-small;
     }
   }
 
