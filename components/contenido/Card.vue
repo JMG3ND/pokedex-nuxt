@@ -14,7 +14,7 @@
           :title="pokemon.name"
           class="card__image"
           :src="pokemon.sprite"
-          @load="finishLoading()"
+          @load="() => loading = false"
         />
       </div>
       <figcaption class="card__description">
@@ -33,7 +33,6 @@ const pokemon = ref({});
 (async () => (pokemon.value = await getCardDataPokemon(prop.url)))();
 
 const loading = ref(true);
-const finishLoading = () => (loading.value = false);
 </script>
 
 <style lang="scss">

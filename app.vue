@@ -33,7 +33,6 @@ $max-widht: 1200px;
   &__menu-container {
     overflow-y: hidden;
     width: 100%;
-    padding: 0 20px;
   }
 
   &__main {
@@ -52,12 +51,6 @@ $max-widht: 1200px;
       max-height: 100%;
       overflow-y: scroll;
     }
-  }
-}
-
-@media screen and (max-width: 500px) {
-  .screen__menu-container {
-    padding: 0;
   }
 }
 </style>

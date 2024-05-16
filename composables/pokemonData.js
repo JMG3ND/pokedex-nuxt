@@ -8,8 +8,6 @@ export async function getListPokemons() { // Utilizamos un método que se auto i
     
     // Hacemos la petición de la url y obtenemos una array de objetos en la propiedad results
     let pokemonsData = await getData(url);
-
-    // Obtenemos el enlace de los siguientes n pokemones
     url = pokemonsData.next;
 
     // Aplicamos un cambio a los datos que obtenemos para que el array solo contenga la url de los pokemones
@@ -24,18 +22,19 @@ export async function getCardDataPokemon(url) {
         const pokemonData = await getData(url);
         
         // De la respuesta destructuramos los valores de id, types y sprites
-        let {name,id: number, types: type, sprites: sprite} = pokemonData;
+        let {name, id: number, types: type, sprites: sprite} = pokemonData;
 
         // Hacemos que la primera letra del nombre sea mayúscula
-        name = name.split('').map((char, index) => index ? char : char.toUpperCase()).join('');
-        name = name.split("-")[0];
+        // Se hace un split "-" ya que existen nombres de pokemones con guiones entonces
+        // solo retoramos el prier elemento del array con [0] para eliminar los guiones y los otros nombres
+        name = (name.charAt(0).toUpperCase() + name.slice(1)).split("-")[0];
 
-        // Accedemos al link de la imágen official-artwork
+        // Accedemos al link de la imágen official-artwork que es la bonita
         sprite = sprite.other["official-artwork"].front_default;
 
         // Accedemos al primer tipo del pokemon para estilizar el color de fondo de la card
+        // ya que algunos pokemones tienen dos tipos y solo nos interesa uno para estilizar a card
         type = type[0].type.name;
         
-        // Acemos push a la lista de pokemones con las propiedades que estabamos buscando
         return { number, name, sprite, type };
 }
