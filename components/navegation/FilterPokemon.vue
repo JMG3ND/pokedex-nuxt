@@ -5,7 +5,7 @@
 </template>
 
 <script setup>
-import { usePokemonStore } from '@/composables/pokemonStore';
+import { usePokemonStore } from "@/composables/pokemonStore";
 const pokemonData = usePokemonStore();
 </script>
 
