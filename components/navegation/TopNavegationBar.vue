@@ -4,7 +4,7 @@
       <img
         class="top-navegation-bar__logo"
         title="logo"
-        src="pokedex-logo.png"
+        src="@/public/pokedex-logo.png"
         alt="Logo"
       />
       <NavegationFilterPokemon />
