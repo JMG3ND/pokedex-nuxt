@@ -8,10 +8,16 @@
 
 <style>
 .card-container {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-evenly;
-  padding: 2%;
-  gap:5px;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 5px;
+  padding: 0 1rem;
+
+  @media screen and (max-width: 600px) {
+    grid-template-columns: repeat(4, 1fr);
+  }
+  @media screen and (max-width: 350px) {
+    grid-template-columns: repeat(3, 1fr);
+  }
 }
 </style>

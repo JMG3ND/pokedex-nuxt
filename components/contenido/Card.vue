@@ -40,7 +40,7 @@ const finishLoading = () => (loading.value = false);
 @import url("https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@700&family=Roboto+Slab&display=swap");
 
 .card {
-  width: 18%;
+  width: 100%;
   border-radius: 1rem;
   cursor: pointer;
   border: rgba(0, 0, 0, 0.3) solid 2px;
@@ -49,7 +49,7 @@ const finishLoading = () => (loading.value = false);
   padding: 0.5rem 0.5rem 0 0.5rem;
 
   @media screen and (max-width: 750px) {
-    width: 23%;
+    width: 100%;
     padding: 0.1rem;
   }
 
@@ -108,7 +108,7 @@ const finishLoading = () => (loading.value = false);
     padding: 0 10px;
     border-radius: 10px;
 
-    @media screen and (max-width: 600px) {
+    @media screen and (max-width: 650px) {
       font-size: small;
     }
     @media screen and (max-width: 500px) {
@@ -117,7 +117,7 @@ const finishLoading = () => (loading.value = false);
   }
 
   &__name {
-    @media screen and (max-width: 600px) {
+    @media screen and (max-width: 650px) {
       font-size: small;
     }
     @media screen and (max-width: 500px) {
