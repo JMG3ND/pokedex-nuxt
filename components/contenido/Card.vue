@@ -1,20 +1,20 @@
 <template>
-  <div class="card" :class="`card--${pokemon.type}`">
+  <div v-if="pokemon.name" class="card" :class="`card--${pokemon.type}`">
     <figure class="card__figure">
       <div class="card__image-container">
         <VisualLoadingSpinner class="card__spinner" v-if="loading" />
-        <img
+        <NuxtImg
           v-if="pokemon.type"
           title="background"
           class="card__image-background"
           :src="`/pokemon-types/${pokemon.type}.png`"
         />
-        <img
+        <NuxtImg
           :style="`display: ${loading ? 'none' : 'block'}`"
           :title="pokemon.name"
           class="card__image"
           :src="pokemon.sprite"
-          @load="() => loading = false"
+          @load="() => (loading = false)"
         />
       </div>
       <figcaption class="card__description">
@@ -26,16 +26,21 @@
 </template>
 
 <script setup>
-import { getCardDataPokemon } from "~/composables/pokemonData";
-
 const prop = defineProps(["url"]);
-const pokemon = ref({});
-(async () => (pokemon.value = await getCardDataPokemon(prop.url)))();
-
 const loading = ref(true);
+
+// Hacemos una petición a la api con la url del pokemon
+const { name: pokename, id, types, sprites } = await $fetch(prop.url);
+
+const pokemon = {
+  name: (pokename.charAt(0).toUpperCase() + pokename.slice(1)).split("-")[0],
+  number: id,
+  type: types[0].type.name,
+  sprite: sprites.other["official-artwork"].front_default,
+};
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 @import url("https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@700&family=Roboto+Slab&display=swap");
 
 .card {
@@ -108,7 +113,8 @@ const loading = ref(true);
   }
 
   // tamaño de fuente para el número y nombre del pokemón
-  &__name, &__number {
+  &__name,
+  &__number {
     @media screen and (max-width: 650px) {
       font-size: small;
     }

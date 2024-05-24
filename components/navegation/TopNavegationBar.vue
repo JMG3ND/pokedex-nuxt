@@ -1,10 +1,10 @@
 <template>
   <div>
     <div class="top-navegation-bar">
-      <img
+      <NuxtImg
         class="top-navegation-bar__logo"
         title="logo"
-        src="@/assets/images/pokedex-logo.png"
+        src="/Images/pokedex-logo.png"
         alt="Logo"
       />
       <NavegationFilterPokemon />

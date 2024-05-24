@@ -10,10 +10,9 @@
   </div>
 </template>
 
-<script setup>
+<script lang="ts" setup>
 import { usePokemonStore } from "@/composables/pokemonStore";
-const pokemonData = usePokemonStore();
-const { finder, index } = storeToRefs(pokemonData);
+const { finder, index } = storeToRefs(usePokemonStore());
 </script>
 
 <style lang="scss" scoped>
