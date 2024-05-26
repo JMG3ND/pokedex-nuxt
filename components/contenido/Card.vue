@@ -30,7 +30,12 @@ const prop = defineProps(["url"]);
 const loading = ref(true);
 
 // Hacemos una petición a la api con la url del pokemon
-const { name: pokename, id, types, sprites } = await $fetch(prop.url);
+const {
+  name: pokename,
+  id,
+  types,
+  sprites,
+} = await $fetch(prop.url, { cache: "default" });
 
 const pokemon = {
   name: (pokename.charAt(0).toUpperCase() + pokename.slice(1)).split("-")[0],
@@ -73,11 +78,7 @@ const pokemon = {
     z-index: 0;
     box-shadow: 3px 2px 55px -21px rgba(0, 0, 0, 0.5);
     position: absolute;
-    max-height: 100%;
-    top: 0;
-    right: 0;
-    left: 0;
-    bottom: 0;
+    width: 100%;
     opacity: 0.3;
   }
 

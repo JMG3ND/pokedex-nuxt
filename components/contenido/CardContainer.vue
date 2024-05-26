@@ -11,7 +11,7 @@
   display: grid;
   grid-template-columns: repeat(5, 1fr);
   gap: 5px;
-  padding: 0 1rem;
+  padding: 0 1rem 1rem 1rem;
 
   @media screen and (max-width: 850px) {
     grid-template-columns: repeat(4, 1fr);
